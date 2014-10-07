@@ -17,6 +17,7 @@ module.exports = function(app) {
 		.get(posts.list)
 		.post(posts.create);
 
+
 	app.route('/posts/:postId')
 		.get(posts.read)
 		.put(users.requiresLogin, posts.hasAuthorization, posts.update)
@@ -35,9 +36,6 @@ module.exports = function(app) {
 	app.route('/posts/:postId/likes')
 		.post(posts.likePost);
 		
-
-	/*app.route('/post/:postId/unlike')
-		.delete('/post/:postId/');*/
 
 	// Finish by binding the app middleware
 	app.param('postId', posts.postByID);

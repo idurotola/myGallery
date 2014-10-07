@@ -29,6 +29,27 @@ var commentSchema = new Schema({
 		default: Date.now
 	}
 });
+/**
+ * Category Schema
+ */
+/*var categorySchema = new Schema({ 
+
+	categoryOwner: {
+	    type: Schema.ObjectId,
+	    ref: 'User'
+	  },
+
+    name: {
+		type: String,
+		required: 'Please Select Appropriate Category',
+		trim: true
+	},
+	
+	created: {
+		type: Date,
+		default: Date.now
+	}
+});*/
 
 /**
  *Image Schema
@@ -42,7 +63,6 @@ var PostSchema = new Schema({
 
 	description: {
 		type: String,
-		default: '',
 		required: 'Please describe the image',
 		trim: true
 	},
@@ -74,6 +94,12 @@ var PostSchema = new Schema({
 		default: []
 	}
 
+	/*categories: {
+		type: [categorySchema],
+		default: []
+	}*/
+
 });
 
 mongoose.model('Post', PostSchema);
+/*mongoose.model('Category', CategorySchema);*/

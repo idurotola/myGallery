@@ -19,7 +19,7 @@ var mongoose = require('mongoose'),
 /**
  * Create a article
  */
-
+/*
 var uploadImage = function(req, res, contentType, tmpPath, destPath) {
     
         // Server side file type checker.
@@ -40,7 +40,7 @@ var uploadImage = function(req, res, contentType, tmpPath, destPath) {
                 });
             }); 
         });
-};
+};*/
 
 exports.create = function(req, res) {
 
@@ -122,6 +122,7 @@ exports.delete = function(req, res) {
 		}
 	});
 };
+
 /**
  * like a post
  */
