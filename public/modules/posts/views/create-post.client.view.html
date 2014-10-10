@@ -10,6 +10,7 @@
 
 	<div class='col-md-2 leftBar'>
 
+		left
 		<div>holds the image</div>
 		<div>the name of selected field and holds the thumbnail</div>
 	</div>
@@ -21,7 +22,6 @@
 			<textarea  name="description" data-ng-model="description" id="description" class="form-control" type='text' rows="2" placeholder="What's It about ?"></textarea>
 
 			<div class='row'>
-
 				<div class='col-sm-3'>
 					<select data-ng-model="fields">
 						<option></option>
@@ -33,7 +33,6 @@
 						<option>Religious</option>
 					</select>
 				</div>
-
 				<div class='col-sm-3'>
 					<input type='file' data-ng-file-select="onFileSelect($files)" accept="image/*">
 				</div>
@@ -41,7 +40,6 @@
 				<div class='col-sm-3 rightBar pull-right'>
 					<input type='submit' value='Upload'>
 				</div>
-
 			</div>
 			</form>
 			</div>
@@ -49,7 +47,7 @@
 				<section>
 					
 					<div class="list-group">
-						<a data-ng-repeat="post in posts" class="list-group-item">
+						<a data-ng-repeat="post in posts"  class="list-group-item">
 							<div ng-click='showComments()'>
 
 							<small class="list-group-item-text">
@@ -58,15 +56,16 @@
 								by
 								<span data-ng-bind="post.user.displayName"></span>
 							</small>
-
+							
 							<p class="list-group-item-text pull-right" data-ng-bind="post.fields"></p>
-							<img class='imagePosted' ng-src="{{post.image[0].path}}">
+							<img ng-src="{{post.image[0].path}}">
 							<h4 class="list-group-item-heading" data-ng-bind="post.description"></h4>
 							
 							</div>
-							
+							<!-- <p ng-click="addComment()">click</p>
+ -->
 							<form data-ng-submit='addComment()'>
-								<input class='col-md-12' type='text' placeholder='Comment ?' data-ng-model='newComment'>
+								<input class='col-md-12' type='text' placeholder='Comment ?'  data-ng-model='newComment'>
 								<input class='pull-right' type='submit' value='Post Comment' data-ng-click='addComment()'>
 							</form>
 
@@ -83,8 +82,7 @@
 		</div>
 
 		</div><!-- end of col-md-6 -->
-
-		<div class='col-md-4' id='commentClass'>
+		<div class='col-md-4'>
 			<section>
 					<div class="list-group">
 						<a data-ng-repeat="comment in comments" class="list-group-item">
@@ -99,9 +97,8 @@
 						</a>
 					</div>
 					<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length">
-						No posts yet, why don't you <a href="/#!/posts/create">create one</a>
+						No posts yet, why don't you <a href="/#!/posts/create">create one</a>?
 					</div>
 				</section>
 		</div>
-
 </section>

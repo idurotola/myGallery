@@ -1,34 +1,32 @@
 /*'use strict';
 
-// Posts controller
 angular.module('posts').controller('PostsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Posts',
-	function($scope, $stateParams, $location, Authentication, Posts ) {
+	function($scope, $stateParams, $location, Authentication, Posts) {
 		$scope.authentication = Authentication;
 
-		// Create new Post
 		$scope.create = function() {
-			// Create new Post object
-			var post = new Posts ({
-				name: this.name
+			alert('so you are here');
+			var post = new Posts({
+				fields: this.fields,
+				description: this.description
+
 			});
-
-			// Redirect after save
 			post.$save(function(response) {
-				$location.path('posts/' + response._id);
+				//$location.path('posts/' + response._id); this specifies where to go next
 
-				// Clear form fields
-				$scope.name = '';
+				$scope.fields = '';
+				$scope.description = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
 
-		// Remove existing Post
-		$scope.remove = function( post ) {
-			if ( post ) { post.$remove();
+		$scope.remove = function(post) {
+			if (post) {
+				post.$remove();
 
-				for (var i in $scope.posts ) {
-					if ($scope.posts [i] === post ) {
+				for (var i in $scope.posts) {
+					if ($scope.posts[i] === post) {
 						$scope.posts.splice(i, 1);
 					}
 				}
@@ -39,9 +37,8 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			}
 		};
 
-		// Update existing Post
 		$scope.update = function() {
-			var post = $scope.post ;
+			var post = $scope.post;
 
 			post.$update(function() {
 				$location.path('posts/' + post._id);
@@ -50,14 +47,12 @@ angular.module('posts').controller('PostsController', ['$scope', '$stateParams',
 			});
 		};
 
-		// Find a list of Posts
 		$scope.find = function() {
 			$scope.posts = Posts.query();
 		};
 
-		// Find existing Post
 		$scope.findOne = function() {
-			$scope.post = Posts.get({ 
+			$scope.post = Posts.get({
 				postId: $stateParams.postId
 			});
 		};

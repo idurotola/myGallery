@@ -13,3 +13,22 @@
 .ng-valid.ng-dirty{
     border-color:#78FA89;
 }
+
+/*MY OWN STYLING STARTS HERE*/
+.updates
+ {
+	height: 20px;
+	background: rgba(0,0,0,.5);
+	border-bottom: 5px solid steelblue;
+}
+.postImage,
+#commentClass
+ {
+	background: rgba(0,0,50,.5);
+}
+#newPost {
+	z-index: 400;
+	background-color:rgba(0,0,0,.4);
+	width: 100%;
+	height: 100%;
+}

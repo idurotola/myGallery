@@ -12,6 +12,7 @@ var mongoose = require('mongoose'),
  */
 var commentSchema = new Schema({ 
 
+	commentBy:String,
 	commentOwner: {
 	    type: Schema.ObjectId,
 	    ref: 'User'
@@ -29,28 +30,20 @@ var commentSchema = new Schema({
 		default: Date.now
 	}
 });
+
 /**
- * Category Schema
+ * Like Schema
  */
-/*var categorySchema = new Schema({ 
-
-	categoryOwner: {
-	    type: Schema.ObjectId,
-	    ref: 'User'
-	  },
-
-    name: {
-		type: String,
-		required: 'Please Select Appropriate Category',
-		trim: true
+/*var LikeSchema = new Schema({
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
 	},
-	
 	created: {
 		type: Date,
 		default: Date.now
 	}
 });*/
-
 /**
  *Image Schema
 */
@@ -67,39 +60,40 @@ var PostSchema = new Schema({
 		trim: true
 	},
 
-	imageUrl : { //this could hold the link to our image posted
-		type: String,
-		default:''
-	},
+	image: [{ //this could hold the link to our image posted
+	
+		path: {
+			type: String,
+			default:''
+		}	
+	}],
 
 	created: {
 		type: Date,
 		default: Date.now
 	},
 
-	likes: {	
-		user: {
-			type: Schema.ObjectId,
-			ref: 'User'
-		},
-
-		like: {
-			type: Number,
-			default: 0
-		}
+	likes: {
+		type: Number,
+		default:0
 	},
 
-	comments: {
+	comments: {	
 		type: [commentSchema],
 		default: []
-	}
+	},
 
-	/*categories: {
-		type: [categorySchema],
-		default: []
-	}*/
+	fields: {
+		type: String,
+		required: 'Please Select the Appropriate field',
+		trim: true
+	},
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	}
 
 });
 
 mongoose.model('Post', PostSchema);
-/*mongoose.model('Category', CategorySchema);*/
+mongoose.model('comments', commentSchema);

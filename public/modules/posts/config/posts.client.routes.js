@@ -1,10 +1,10 @@
-/*'use strict';
+'use strict';
 
-//Setting up route
+// Setting up route
 angular.module('posts').config(['$stateProvider',
 	function($stateProvider) {
 		// Posts state routing
-		$stateProvider.
+		$stateProvider. //this would probably have just one view
 		state('listPosts', {
 			url: '/posts',
 			templateUrl: 'modules/posts/views/list-posts.client.view.html'
@@ -17,9 +17,9 @@ angular.module('posts').config(['$stateProvider',
 			url: '/posts/:postId',
 			templateUrl: 'modules/posts/views/view-post.client.view.html'
 		}).
-		state('editPost', {`
+		state('editPost', {
 			url: '/posts/:postId/edit',
 			templateUrl: 'modules/posts/views/edit-post.client.view.html'
 		});
 	}
-]);*/
+]);

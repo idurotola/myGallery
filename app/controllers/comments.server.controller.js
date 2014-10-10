@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Post = mongoose.model('Post'),
+    comments = mongoose.model('comments'),
     _ = require('lodash');
 var posts = require('../../app/controllers/posts');
 
@@ -39,7 +40,10 @@ var getErrorMessage = function(err) {
  */
 exports.addComment = function(req, res) {
     var post = req.post;
+    
     var comment = req.body;
+    comment.commentBy =req.user.displayName;
+    console.log(comment.body);
     comment.commentOwner = req.user;
     post.comments.unshift(comment);
 
@@ -63,7 +67,7 @@ exports.addComment = function(req, res) {
 exports.updateComment = function(req, res){
     var post = req.post;
 
-    post = _.extend(post.comment, req.body);
+    post = _.extend(post.comments, req.body);
 
     post.save(function(err) {
         if(err) {
@@ -103,7 +107,7 @@ exports.deleteComment = function(req, res) {
  */
 exports.listComment = function(req, res) {
     console.log(req);
-    Post.find().sort('-created').populate('user', 'displayName').exec(function(err, posts) {
+    Post.find().sort('-created').populate('user','displayName').exec(function(err, posts) {
         if (err) {
             return res.status(400).send({
                 message: 'errorHandler.getErrorMessage(err) in list'

@@ -1,6 +1,6 @@
-<!-- <section data-ng-controller="ArticlesController" data-ng-init="find()">
+<section data-ng-controller="PostsController" data-ng-init="find()">
 	<div class="page-header">
-		<h1>Posts</h1>
+		<h1>All Post</h1>
 	</div>
 	<div class="list-group">
 		<a data-ng-repeat="post in posts" data-ng-href="#!/posts/{{post._id}}" class="list-group-item">
@@ -10,11 +10,11 @@
 				by
 				<span data-ng-bind="post.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="post.title"></h4>
-			<p class="list-group-item-text" data-ng-bind="post.content"></p>
+			<h4 class="list-group-item-heading" data-ng-bind="post.fields"></h4>
+			<p class="list-group-item-text" data-ng-bind="post.description"></p>
 		</a>
 	</div>
 	<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length">
-		No articles yet, why don't you <a href="/#!/posts/create">create one</a>?
+		No posts yet, why don't you <a href="/#!/posts/create">create one</a>?
 	</div>
-</section> -->
+</section>
