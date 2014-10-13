@@ -8,10 +8,10 @@
 	display: none !important;
 }
 .ng-invalid.ng-dirty{
-    border-color:#FA787E;
+   /* border-color:#FA787E;*/
 }
 .ng-valid.ng-dirty{
-    border-color:#78FA89;
+    /*border-color:#78FA89;*/
 }
 
 /*MY OWN STYLING STARTS HERE*/
@@ -21,14 +21,126 @@
 	background: rgba(0,0,0,.5);
 	border-bottom: 5px solid steelblue;
 }
-.postImage,
-#commentClass
- {
-	background: rgba(0,0,50,.5);
+
+#overlay
+{
+width: 100%;
+height:100%;
+position:absolute;
+z-index: 100;
+top:0;
+left:0;
+background: rgba(100,100,255,0.8);
+position: fixed;
 }
-#newPost {
-	z-index: 400;
-	background-color:rgba(0,0,0,.4);
+#newPost
+{
+width: 50%;
+height: 50%;
+background: url(../img/bgmetro1.png) no-repeat;
+background-size: cover;
+background-color:rgba(0,0,0,.3);
+position: fixed;
+top:150px;
+left:25%;
+right:25%;
+z-index: 20;
+}
+form>ul>li {
+	text-decoration: none;
+	list-style: none;
+	display:inline-block;
+	/*height: 60px;*/
+	border-bottom: 2px solid tomato	;
+	padding-top: 10px;
+	width: 90%;
+	padding-bottom: 10px;
+}
+
+form>ul>li label {
+	color: #fff;
+}
+#description {
+	padding-bottom: 15px;
+	margin-top: 1%;
+	border-bottom: 30px !important;
+}
+#description textarea,
+select {
+	float:right;
+	color: #000 !important;
+	margin-right:20%;
+
+}
+select
+{
+	width: 50%;
+}
+.postImage {
+	margin-top: 50px;
+}
+.imageLoad {
+	padding-left: 7%;
+}
+#uploadBtn {
+	width: 100px;
+	height: 40px;
+	outline-width: 6px;
+	text-align: center;
+}
+.deleteIcon
+ {
+	background: url(../img/del.png) no-repeat  3px;
+	background-size: cover;
+	/*background-color: white;*/
+	z-index: 2000;
+	width: 30px;
+	height: 30px;
+	display: block;
+}
+.msgIcon
+   {
+	background: url(../img/Messaging.png ) no-repeat  100% 0px;
+	background-size: 35px;
+
+}
+#describe{
+	width: 100% !important;
+	padding: 0 5px;
+}
+#postTile a{
+	width: 20%;
+	display: inline-block;
+}
+#postTile img{
+	height: auto;
 	width: 100%;
-	height: 100%;
+	background-image: url(../img/Messaging.png ) no-repeat;
+	background-size: cover;
+	padding: 0px 0px !important;
+}
+.comment-item-text
+{
+	color: #fff !important;
+}
+.myList-group-item {
+	/*position:relative;
+	background-color: #fff;
+	border:1px solid #DDD;
+	margin-top: -1px;*/
+	/*padding:10px 15px;*/
+}
+a.myList-group-item {
+	color: #555;
+}
+.myList-group-item img {
+	padding:1px 1px;
+}
+/*.ng-valid:focus {
+	border: 1px solid tomato;
+}
+.ng-valid {
+	border: 1px solid #ccc;
+}*/
+input[type=text]{
 }

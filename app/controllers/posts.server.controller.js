@@ -120,7 +120,7 @@ exports.postByID = function(req, res, next, id) {
 	console.log('we are here');
 	Post.findById(id).populate('user', 'displayName').exec(function(err, post) {
 		if (err) return next(err);
-		if (!post) return next(new Error('Failed to load article ' + id));
+		if (!post) return next(new Error('Failed to load Post ' + id));
 		req.post = post;
 		next();
 	});

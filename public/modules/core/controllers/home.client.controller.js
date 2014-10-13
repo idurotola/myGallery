@@ -4,7 +4,14 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 	function($scope,$http,$state ,$stateParams, $location, Authentication, Posts) {
 		$scope.authentication = Authentication;
 
-		$scope.postoverlay =false;
+		$scope.showOverlay = false;
+
+		$scope.overlayClicked = function () {
+			$scope.showOverlay = true;
+		};
+		$scope.cancelPost = function () {
+			$scope.showOverlay = false;
+		};
 		$scope.create = function() {
 
 				var post = new Posts({
@@ -16,11 +23,9 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 				post.image = $scope.stringFile;
 
 				post.$save(function(response) {
-					console.log(response);
-					$scope.fields = '';
 					$scope.description = '';
+					$scope.showOverlay = false;
 					$scope.find();
-					$scope.showComments();
 				}, function(errorResponse) {
 					$scope.error = errorResponse.data.message;
 				});	
@@ -28,22 +33,24 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 
 		$scope.onFileSelect = function ($files) {
 
-					$scope.file = $files;
-					$scope.stringFile = [];
-					for ( var i in $scope.file ) {
-						var reader = new FileReader();
-						reader.onload = function(e) {
-						   $scope.stringFile.push({path: e.target.result});
-						};
-						reader.readAsDataURL($scope.file[i]);	
-					}
+				$scope.file = $files;
+				$scope.stringFile = [];
+				for ( var i in $scope.file ) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+					   $scope.stringFile.push({path: e.target.result});
+					};
+					reader.readAsDataURL($scope.file[i]);	
+				}
 		};
 		
 		$scope.remove = function(post) {
 			if (post) {
+				console.log("post");
 				post.$remove();
 				for (var i in $scope.posts) {
 					if ($scope.posts[i] === post) {
+						console.log($scope.posts[i]);
 						$scope.posts.splice(i, 1);
 					}
 				}
@@ -64,36 +71,31 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			});
 		};
 
-		$scope.showComments = function() {
-			var post = $scope.post;
-			console.log(this.post);
-			$scope.comments = this.post.comments;
-			console.log($scope.comments);
+		$scope.showComments = function(index) {
+			$scope.comments = $scope.posts[index].comments;
 		};
 
+		/*my own delete function*/
+		$scope.deletePost = function(post) {
+			$location.path('posts/' + this.post._id) ;	
+		};
 
 		/*this is to add comment*/
-		$scope.addComment = function() {
+		$scope.addComment = function(index) {
 			var params = {
 			content : this.newComment
 			};
+			this.newComment = '';
 			var url = '/posts/'+ this.post._id +'/comments';
 			$http.post(url,params).success(function (data){
-				console.log(data);
-				$scope.find();
+				$scope.posts[index].comments = data.comments;
 				$scope.comments = data.comments;
 			});
 		};
-		$scope.likeAble = function() {
-			alert('in likeable');
-			var params = {
-			content : this.newComment
-			};
-			var url = '/posts/'+ this.post._id +'/likes'
-			$http.put(url,params).success(function(liked){
-				//show the user that he has like an item
-				//show now unlike
-				$scope.find();
+		$scope.likeAble = function(index) {
+			var url = '/posts/'+ this.post._id +'/likes';
+			$http.put(url,{}).success(function(liked){
+			$scope.posts[index].likes = liked.likes;
 			});
 		};
 
