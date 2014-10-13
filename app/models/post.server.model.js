@@ -32,19 +32,6 @@ var commentSchema = new Schema({
 });
 
 /**
- * Like Schema
- */
-/*var LikeSchema = new Schema({
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	},
-	created: {
-		type: Date,
-		default: Date.now
-	}
-});*/
-/**
  *Image Schema
 */
 var PostSchema = new Schema({
@@ -61,7 +48,6 @@ var PostSchema = new Schema({
 	},
 
 	image: [{ //this could hold the link to our image posted
-	
 		path: {
 			type: String,
 			default:''

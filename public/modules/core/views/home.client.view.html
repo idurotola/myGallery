@@ -48,9 +48,9 @@
 	</div>
 
 	<div class='col-md-2 leftBar'>
-		<div ng-click='overlayClicked()' class=''>Create</div>
-		<div>holds the image</div>
-		<div>the name of selected field and holds the thumbnail</div>
+		<div  class=''ng-click='overlayClicked()'>Create</div>
+		<img class='imagePosted' ng-src="{{authentication.user.profile[0].path}}">
+		<div data-ng-bind='authentication.user.displayName' class='displayName '></div>
 	</div>
 
 	<div class='col-md-6'>
@@ -77,13 +77,17 @@
 							</div>
 							
 							<form data-ng-submit='addComment($index)'>
-								<input class='col-md-12' type='text' placeholder='Comment ?' data-ng-model='newComment'>
-								<input class='pull-right' type='submit' value='Post Comment' data-ng-click='addComment($index)'>
+								<input class='col-md-12'type='text' placeholder='Comment ?' data-ng-model='newComment'>
+							<!-- 	<input class='pull-right' type='submit' value='Post Comment' data-ng-click='addComment($index)'> -->
 							</form>
 
 							<div>
 								<img ng-src='/modules/core/img/love.png' style='width:16px;height:16px' data-ng-click='likeAble($index)'>
 								<span ng-bind="post.likes"></span>
+									,
+								<img src="/modules/core/img/comment.png" style='width:16px;height:16px'>
+								<span ng-bind='post.comments.length'></span>
+
 							</div>
 						</a>
 					</div>

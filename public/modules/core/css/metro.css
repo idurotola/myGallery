@@ -134,7 +134,8 @@ textarea{overflow:auto;vertical-align:top;}*/
 .metro .metro-images .metro-image-text .text{margin-left:120px;margin-top:-115px;}.metro .metro-images .metro-image-text .text .title{font-size:100%;color:#ffffff;}
 .metro .metro-images .metro-image-text .text .subtitle{font-size:75%;color:#7b7b7b;}
 .metro .metro-images .metro-image-text .text .description{font-size:90%;color:#ffffff;}
-.metro .metro-images .metro-image-text.selected{border:0;background:#219297;}.metro .metro-images .metro-image-text.selected *{color:#fff !important;}
+.metro .metro-images .metro-image-text.selected{border:0;background:#219297;}
+.metro .metro-images .metro-image-text.selected *{color:#fff !important;}
 .metro .metro-images .metro-image-text.selected b.check:after{right:5px;top:-40px;}
 .metro .metro-button{text-decoration:none;border:2px #e2e2e2 solid;padding:5px 20px;margin:10px 10px 0 10px;color:#fff !important;background:#1d1d1d;cursor:pointer;min-width:50px;display:inline-block;position:relative;text-align:center;border-radius:0;}.metro .metro-button:hover{background:#3a3a3a;}
 .metro .metro-button.default:hover{background:#219297;}
@@ -232,25 +233,6 @@ textarea{overflow:auto;vertical-align:top;}*/
 .metro.metro-theme-light .metro-button.disabled,.metro.metro-theme-light .metro-command-button.disabled{background:#eaeaea !important;border-color:#eaeaea !important;color:#9b9b9b !important;}.metro.metro-theme-light .metro-button.disabled .title,.metro.metro-theme-light .metro-command-button.disabled .title,.metro.metro-theme-light .metro-button.disabled .subtitle,.metro.metro-theme-light .metro-command-button.disabled .subtitle{color:#9d9d9d !important;}
 .metro.metro-theme-light .metro-button:disabled,.metro.metro-theme-light .metro-command-button:disabled{background:#eaeaea !important;border-color:#eaeaea !important;color:#9b9b9b !important;}.metro.metro-theme-light .metro-button:disabled .title,.metro.metro-theme-light .metro-command-button:disabled .title,.metro.metro-theme-light .metro-button:disabled .subtitle,.metro.metro-theme-light .metro-command-button:disabled .subtitle{color:#9d9d9d !important;}
 .metro.metro-theme-light .metro-command-button:active{background:#ccc;border-color:#ccc;}
-.metro.metro-theme-light .metro-radio input[type=radio]+span::before{border:2px #cfcfcf solid;background:#fff;height:20px;width:20px;}
-.metro.metro-theme-light .metro-radio input[type=radio]:disabled+span::before{background:#e6e6e6;}
-.metro.metro-theme-light .metro-radio input[type=radio]:disabled:checked+span::after{background:#8a8a8a;}
-.metro.metro-theme-light .metro-radio:hover input[type=radio]:checked+span::before{background:#ffffff;}
-.metro.metro-theme-light .metro-radio:hover input[type=radio]:disabled+span::before{background:#e6e6e6;}
-.metro.metro-theme-light .metro-radio:hover input[type=radio]:disabled:checked+span::after{background:#8a8a8a;}
-.metro.metro-theme-light .metro-radio:hover input[type=radio]:checked+span::after{background:#212121;}
-.metro.metro-theme-light .metro-check input[type=checkbox]+span::before{border:2px #cfcfcf solid;background:#fff;height:20px;width:20px;}
-.metro.metro-theme-light .metro-check input[type=checkbox]:disabled+span::before{background:#e6e6e6;}
-.metro.metro-theme-light .metro-check input[type=checkbox]:disabled:checked+span::after{color:#8a8a8a;}
-.metro.metro-theme-light .metro-check:hover input[type=checkbox]+span::before{background:#fff;}
-.metro.metro-theme-light .metro-check:hover input[type=checkbox]:disabled+span::before{background:#e6e6e6;}
-.metro.metro-theme-light .metro-switch input[type=checkbox]+span::before{border-color:#fff;outline-color:#a6a6a6;}
-.metro.metro-theme-light .metro-switch input[type=checkbox]:not(:checked)+span::before{background:#b5b5b5;}
-.metro.metro-theme-light .metro-switch input[type=checkbox]+span::after{background:#333;}
-.metro.metro-theme-light .metro-switch:hover input[type=checkbox]:checked+span::before{background:#25bbc4;}
-.metro.metro-theme-light .metro-switch:hover input[type=checkbox]:not(:checked)+span::before{background:#b5b5b5;}
-.metro.metro-theme-light .metro-switch input[type=checkbox]:disabled+span::before,.metro.metro-theme-light .metro-switch:hover input[type=checkbox]:disabled+span::before{background:#e0e0e0;outline-color:#cccccc;}
-.metro.metro-theme-light .metro-switch input[type=checkbox]:disabled+span::after,.metro.metro-theme-light .metro-switch:hover input[type=checkbox]:disabled+span::after{background:#a6a6a6;}
 .metro.metro-theme-light .card{border-color:#e1e1e1;}
 .metro .layout .header{display:table-cell;vertical-align:bottom;height:140px;padding-bottom:40px;}
 .metro .layout .content{margin-top:140px;margin-left:120px;display:block;*zoom:1;}.metro .layout .content:before,.metro .layout .content:after{display:table;content:"";}

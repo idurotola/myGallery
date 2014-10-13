@@ -15,6 +15,9 @@
 }
 
 /*MY OWN STYLING STARTS HERE*/
+body {
+	background-color: #f0f0f3 !important;
+}
 .updates
  {
 	height: 20px;
@@ -30,31 +33,37 @@ position:absolute;
 z-index: 100;
 top:0;
 left:0;
-background: rgba(100,100,255,0.8);
+background: rgba(0,0,10,0.6);
 position: fixed;
 }
 #newPost
 {
 width: 50%;
-height: 50%;
-background: url(../img/bgmetro1.png) no-repeat;
+height: 40%;
+/*background: url(../img/bgmetro1.png) no-repeat;*/
 background-size: cover;
-background-color:rgba(0,0,0,.3);
+/*background-color:rgba(0,0,0,.7);*/
+background-color: steelblue;
 position: fixed;
 top:150px;
 left:25%;
 right:25%;
 z-index: 20;
+border-radius: 5px
 }
 form>ul>li {
 	text-decoration: none;
 	list-style: none;
 	display:inline-block;
 	/*height: 60px;*/
-	border-bottom: 2px solid tomato	;
+	border-bottom: 1px solid #fff	;
 	padding-top: 10px;
 	width: 90%;
 	padding-bottom: 10px;
+
+}
+form>ul>li:first-child {
+
 }
 
 form>ul>li label {
@@ -108,9 +117,21 @@ select
 	width: 100% !important;
 	padding: 0 5px;
 }
+#postTile {
+	margin-left: auto;
+	margin-right: auto;
+}
 #postTile a{
-	width: 20%;
+	width: 18%;
 	display: inline-block;
+	margin:3px 5px; 
+	border-top: 15px;
+	text-decoration: none;
+	padding: 2px;
+}
+#postTile a:hover{
+	background-color: steelblue;
+	transition:.4s;
 }
 #postTile img{
 	height: auto;
@@ -118,17 +139,14 @@ select
 	background-image: url(../img/Messaging.png ) no-repeat;
 	background-size: cover;
 	padding: 0px 0px !important;
+	border-bottom: 1px solid #f4f4f4;
 }
 .comment-item-text
 {
 	color: #fff !important;
 }
 .myList-group-item {
-	/*position:relative;
-	background-color: #fff;
-	border:1px solid #DDD;
-	margin-top: -1px;*/
-	/*padding:10px 15px;*/
+
 }
 a.myList-group-item {
 	color: #555;
@@ -136,11 +154,54 @@ a.myList-group-item {
 .myList-group-item img {
 	padding:1px 1px;
 }
-/*.ng-valid:focus {
-	border: 1px solid tomato;
+input[type=file]{
+	color: white;
 }
-.ng-valid {
-	border: 1px solid #ccc;
-}*/
-input[type=text]{
+.displayName {
+	width: 100%;
+	background-color: tomato;
+	text-align: center;
+
+}
+.list-group-item-heading {
+	width: 100%;
+	background-color: rgba(20,20,20,.2);
+	border-bottom: 1px solid #bbb;
+}
+/*==================================================
+ * Effect 2
+ * ===============================================*/
+ .effect2
+{
+  position: relative;
+}
+.effect2:before, .effect2:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.effect2:after
+{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
 }

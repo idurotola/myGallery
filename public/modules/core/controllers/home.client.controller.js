@@ -46,11 +46,9 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 		
 		$scope.remove = function(post) {
 			if (post) {
-				console.log("post");
 				post.$remove();
 				for (var i in $scope.posts) {
 					if ($scope.posts[i] === post) {
-						console.log($scope.posts[i]);
 						$scope.posts.splice(i, 1);
 					}
 				}
@@ -109,7 +107,6 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			$scope.post = Posts.get({
 				postId: $stateParams.postId
 			});
-
 		};
 	}
 ]);

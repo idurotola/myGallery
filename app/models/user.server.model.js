@@ -31,6 +31,14 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your first name']
 	},
+	
+	profile: [{ //this could hold the link to our image posted
+	
+		path: {
+			type: String,
+			default:''
+		}	
+	}],
 	lastName: {
 		type: String,
 		trim: true,

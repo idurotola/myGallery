@@ -2,14 +2,15 @@
 	<div class="page-header">
 		<h1>Art Gallery</h1>
 	</div>
-	<div class=" col-md-12">
+	<div class=" col-md-12 centered">
 
 		<div id='postTile'><!-- start of tile -->
-		<a data-ng-repeat="post in posts" data-ng-href="#!/posts/{{post._id}}" class="myList-group-item portfolio-item" >
+		<a data-ng-repeat="post in posts" data-ng-href="#!/posts/{{post._id}}" class="myList-group-item portfolio-item  effect2" >
 
   
 			<img class='imagePosted' ng-src="{{post.image[0].path}}" >  
 			<div class="list-group-item">
+				<h4 class="list-group-item-heading" data-ng-bind="post.fields"></h4>
 			<small class="list-group-item-text">
 				@
 				<span data-ng-bind="post.user.displayName"></span>
@@ -18,7 +19,7 @@
 				
 			</small>
 			
-			<h4 class="list-group-item-heading" data-ng-bind="post.fields"></h4>
+			
 			<p class="list-group-item-text" data-ng-bind="post.description"></p>
 			</div>
 		</a>

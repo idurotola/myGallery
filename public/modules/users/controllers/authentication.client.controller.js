@@ -8,6 +8,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		if ($scope.authentication.user) $location.path('/');
 
 		$scope.signup = function() {
+			$scope.credentials.profile = $scope.stringFile;
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
@@ -17,6 +18,19 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
+		};
+
+		$scope.profilePhoto = function ($files) {
+
+				$scope.file = $files;
+				$scope.stringFile = [];
+				for ( var i in $scope.file ) {
+					var reader = new FileReader();
+					reader.onload = function(e) {
+					   $scope.stringFile.push({path: e.target.result});
+					};
+					reader.readAsDataURL($scope.file[i]);	
+				}
 		};
 
 		$scope.signin = function() {
