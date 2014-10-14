@@ -35,7 +35,7 @@ module.exports = function(app) {
 
 	//Like Routes
 	app.route('/posts/:postId/likes')
-		.put(posts.likePost);
+		.put(posts.likePost2);
 		
 
 	// Finish by binding the app middleware

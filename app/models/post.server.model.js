@@ -30,6 +30,21 @@ var commentSchema = new Schema({
 		default: Date.now
 	}
 });
+/**
+ * Like Schema
+ */
+var likeSchema = new Schema ({
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
+
+	created: {
+		type: Date,
+		default: Date.now
+	}
+
+	});
 
 /**
  *Image Schema
@@ -59,15 +74,17 @@ var PostSchema = new Schema({
 		default: Date.now
 	},
 
-	likes: {
+	/*likes: {
 		type: Number,
 		default:0
-	},
+	},*/
 
 	comments: {	
 		type: [commentSchema],
 		default: []
 	},
+	
+	likes:[likeSchema],
 
 	fields: {
 		type: String,

@@ -83,25 +83,26 @@ exports.delete = function(req, res) {
 /**
  * like a post
  */
-exports.likePost = function(req, res) {
+/*exports.likePost = function(req, res) {
     var post = req.post;
 	post.likes += 1;
 
 	post.save(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+				message: 'errorHandler.getErrorMessage(err)'
 			});
 		} else {
 			res.jsonp(post);
 		}
 	});
 };
-
+*/
 /******************************************
 			ANOTHER KIND OF LIKE
 ******************************************/
-/*exports.likePost2 = function(req, res) {
+exports.likePost2 = function(req, res) {
+	console.log('it entered');
   var post = req.post,
         like = req.body;
         like.user = req.user;
@@ -123,7 +124,7 @@ exports.likePost = function(req, res) {
 
             post.save(function(err) {
                if (err) {
-                   return res.send(400, {
+                   return res.status(400).send({
                       message: ''
                    });
                 } else {
@@ -132,13 +133,13 @@ exports.likePost = function(req, res) {
             });
         } 
         else {
-            return res.send(400, {
+            return res.status(400).send({
                message: 'you have already liked this post before'
             });
         }
     }
 };
-*/
+
 
 /******************************************
 		END OF THE LIKE 
