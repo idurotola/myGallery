@@ -1,3 +1,14 @@
+/********************************
+	SCROLL BAR HANDLING
+********************************/
+
+
+/*************************************
+::-webkit-scrollbar { 
+    display: none; 
+} hidding scroll bar
+**************************************/
+
 .content {
 	margin-top: 50px;
 }
@@ -16,15 +27,37 @@
 
 /*MY OWN STYLING STARTS HERE*/
 body {
-	background-color: #f0f0f3 !important;
+	background-color: #dbdbdb !important;
+	/*background: url(../img/bg3.jpg) no-repeat;*/
+	background-size: cover;
 }
 .updates
  {
-	height: 20px;
-	background: rgba(0,0,0,.5);
-	border-bottom: 5px solid steelblue;
+ 	margin-top: 1%;
+	border-radius: 5px;
 }
 
+.updates ul 
+{
+	margin-right: 22%;
+}
+.updates ul li {
+	display: inline-block;
+	width: 30%;
+	background-color: rgba(255,255,255,.4);
+	color: #888 !important;
+	text-decoration: none;
+}
+.updates a
+ {
+	text-decoration: none;
+	color:#888;
+}
+.updates li:hover
+ {
+	text-decoration: none;
+	background-color: white;
+}
 #overlay
 {
 width: 100%;
@@ -40,9 +73,7 @@ position: fixed;
 {
 width: 50%;
 height: 40%;
-/*background: url(../img/bgmetro1.png) no-repeat;*/
 background-size: cover;
-/*background-color:rgba(0,0,0,.7);*/
 background-color: steelblue;
 position: fixed;
 top:150px;
@@ -55,7 +86,6 @@ form>ul>li {
 	text-decoration: none;
 	list-style: none;
 	display:inline-block;
-	/*height: 60px;*/
 	border-bottom: 1px solid #fff	;
 	padding-top: 10px;
 	width: 90%;
@@ -107,16 +137,7 @@ select
 	height: 30px;
 	display: block;
 }
-.msgIcon
-   {
-	background: url(../img/Messaging.png ) no-repeat  100% 0px;
-	background-size: 35px;
 
-}
-#describe{
-	width: 100% !important;
-	padding: 0 5px;
-}
 #postTile {
 	margin-left: auto;
 	margin-right: auto;
@@ -130,23 +151,35 @@ select
 	padding: 2px;
 }
 #postTile a:hover{
-	background-color: steelblue;
+	background-color:rgba(100,100,100,.1);
 	transition:.4s;
 }
 #postTile img{
-	height: auto;
+	max-height: 200px;
 	width: 100%;
 	background-image: url(../img/Messaging.png ) no-repeat;
 	background-size: cover;
 	padding: 0px 0px !important;
 	border-bottom: 1px solid #f4f4f4;
 }
+/***************************
+		COMMENTS
+***************************/
+.list-group{
+	overflow-y:auto;
+	height: 500px; 
+}
 .comment-item-text
 {
-	color: #fff !important;
+	color: #666 !important;
 }
-.myList-group-item {
-
+.commentBox {
+	background-color: rgba(255,255,255,.6);
+	border-left: 3px solid #888;
+}
+.commentBox:hover {
+	background-color: rgba(200,200,250,.2) !important;
+	border-right: 3px solid #888;
 }
 a.myList-group-item {
 	color: #555;
@@ -163,7 +196,7 @@ input[type=file]{
 	text-align: center;
 
 }
-.list-group-item-heading {
+.myList-group-item-heading {
 	width: 100%;
 	background-color: rgba(20,20,20,.2);
 	border-bottom: 1px solid #bbb;
@@ -182,26 +215,23 @@ input[type=file]{
   content: "";
   bottom: 15px;
   left: 10px;
-  width: 50%;
+  width: 90%;
   top: 80%;
   max-width:300px;
   background: #777;
   -webkit-box-shadow: 0 15px 10px #777;
   -moz-box-shadow: 0 15px 10px #777;
   box-shadow: 0 15px 10px #777;
-  -webkit-transform: rotate(-3deg);
-  -moz-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  transform: rotate(-3deg);
 }
-.effect2:after
+.effect2:hover
 {
-  -webkit-transform: rotate(3deg);
-  -moz-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  transform: rotate(3deg);
-  right: 10px;
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+  -ms-transform: rotate(1deg);
+  transform: rotate(1deg); 
+  right: 2px;
   left: auto;
+  padding: 3px 3px;
+  transition:.4s;
 }

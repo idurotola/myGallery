@@ -98,6 +98,52 @@ exports.likePost = function(req, res) {
 	});
 };
 
+/******************************************
+			ANOTHER KIND OF LIKE
+******************************************/
+/*exports.likePost2 = function(req, res) {
+  var post = req.post,
+        like = req.body;
+        like.user = req.user;
+    var Liked = false; 
+    
+    if (req.user.id === post.user._id.toString()) { 
+        return res.send(400, {
+               message: 'You cannot like your own post'
+        });
+    } else {
+        for(var i = 0; i < post.likes.length; i++) {
+           if (req.user.id === post.likes[i].user.toString()) {
+               Liked = true;
+               break;
+            }
+        }
+        if (!Liked) {
+            post.likes.push(like);
+
+            post.save(function(err) {
+               if (err) {
+                   return res.send(400, {
+                      message: ''
+                   });
+                } else {
+                    res.jsonp(post);
+                }
+            });
+        } 
+        else {
+            return res.send(400, {
+               message: 'you have already liked this post before'
+            });
+        }
+    }
+};
+*/
+
+/******************************************
+		END OF THE LIKE 
+******************************************/
+
 /**
  * List of Posts
  */
@@ -114,7 +160,7 @@ exports.list = function(req, res) {
 };
 
 /**
- * Article middleware
+ * Posts middleware
  */
 exports.postByID = function(req, res, next, id) {
 	console.log('we are here');
@@ -127,7 +173,7 @@ exports.postByID = function(req, res, next, id) {
 };
 
 /**
- * Article authorization middleware
+ * Posts authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
 	if (req.post.user.id !== req.user.id) {

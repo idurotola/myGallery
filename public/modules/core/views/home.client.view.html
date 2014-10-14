@@ -1,7 +1,7 @@
 
-<div data-ng-hide="authentication.user._id">
+<!-- <div data-ng-hide="authentication.user._id">
 	show a front page that will promp user to sign in to be able to post
-</div>
+</div> -->
 
 <section data-ng-controller="PostsController" data-ng-show="authentication.user._id" data-ng-init="find()">
 	<div id="overlay" ng-show="showOverlay">
@@ -44,41 +44,49 @@
 	</div>
 
 	<div class='updates'>
-		<!-- this should house the -->
+		<div align= 'center'>
+		<ul>
+			<li ng-click='overlayClicked()'>
+				<a  class=''>Create</a>
+			</li>
+				<a href="/#!/posts" class=''>
+					<li>
+							List Post
+					</li>
+				</a>
+		</ul>
+		</div>
 	</div>
 
-	<div class='col-md-2 leftBar'>
-		<div  class=''ng-click='overlayClicked()'>Create</div>
-		<img class='imagePosted' ng-src="{{authentication.user.profile[0].path}}">
-		<div data-ng-bind='authentication.user.displayName' class='displayName '></div>
+	<div class='col-md-2 leftBar'>		
+		<img class='imagePosted  img-thumbnail' ng-src="{{authentication.user.profile[0].path}}">
+		<div data-ng-bind='authentication.user.displayName' class='displayName'></div>
 	</div>
 
-	<div class='col-md-6'>
+	<div class='col-md-6 col-sm-12'>
 			<div>
-				<section>
-					
+				<section>	
 					<div class="list-group">
 						<a data-ng-repeat="post in posts" class="list-group-item">
 							<div ng-click='showComments($index)'>
 
 							<small class="list-group-item-text">
-								Posted on
-								<span data-ng-bind="post.created | date:'mediumDate'"></span>
-								by
-								<span data-ng-bind="post.user.displayName"></span>
-							 	 <img src="/modules/core/img/delete.png" data-ng-show="authentication.user._id == post.user._id" ng-click='deletePost();'>
+									Posted on
+									<span data-ng-bind="post.created | date:'mediumDate'"></span>
+									by
+									<span data-ng-bind="post.user.displayName"></span>
 							</small>
 
+							<img class='pull-right' style='width:12px;height:12px' src="/modules/core/img/delete1.png" data-ng-show="authentication.user._id == post.user._id" ng-click='deletePost();'>
 
-							<p class="list-group-item-text pull-right" data-ng-bind="post.fields"></p>
+							<p class="list-group-item-text pull-right" style='margin-right:6px'data-ng-bind="post.fields"></p>
 							<img class='imagePosted' ng-src="{{post.image[0].path}}">
-							<div><h5 class='text-nowrap' data-ng-bind="post.description"></h5></div>
+							<h5 data-ng-bind="post.description"></h5>
 							
 							</div>
 							
 							<form data-ng-submit='addComment($index)'>
 								<input class='col-md-12'type='text' placeholder='Comment ?' data-ng-model='newComment'>
-							<!-- 	<input class='pull-right' type='submit' value='Post Comment' data-ng-click='addComment($index)'> -->
 							</form>
 
 							<div>
@@ -91,20 +99,19 @@
 							</div>
 						</a>
 					</div>
-					<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length">
-						No posts yet, why don't you <a href="/#!/posts/create">create one</a>?
+					<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length" ng-click='overlayClicked()'>
+						No posts yet, why don't you <a>create one</a>?
 					</div>
 				</section>
 		</div>
 
 		</div><!-- end of col-md-6 -->
 
-		<div class='col-md-4' id='commentClass'>
-			<section>
+		<div class='col-md-4 ' id='commentClass'>
+			<section >
 					<div class="list-group">
-						<a data-ng-repeat="comment in comments" class="list-group-item msgIcon bg-color-blue ">
-							<b class='sticker sticker-left sticker-color-orange'></b>
-							<small class="list-group-item-text comment-item-text">
+						<a data-ng-repeat="comment in comments" class="list-group-item commentBox">
+							<small class="list-group-item-texts comment-item-text">
 								Posted on
 								<span data-ng-bind="comment.created | date:'mediumDate'"></span>
 								by
@@ -114,10 +121,6 @@
 							<p class="list-group-item-text" data-ng-bind="post.description"></p>
 						</a>
 					</div>
-					<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length">
-						No posts yet, why don't you <a href="/#!/posts/create">create one</a>
-					</div>
 				</section>
 		</div>
-
 </section>

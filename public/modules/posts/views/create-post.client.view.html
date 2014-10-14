@@ -1,11 +1,10 @@
-
+<!-- 
 <div data-ng-hide="authentication.user._id">
 	show a front page that will promp user to sign in to be able to post
 </div>
 <section data-ng-controller="PostsController" data-ng-show="authentication.user._id"  data-ng-init="find()">
 
 	<div class='updates'>
-		<!-- this should house the -->
 	</div>
 
 	<div class='col-md-2 leftBar'>
@@ -15,8 +14,7 @@
 		<div>the name of selected field and holds the thumbnail</div>
 	</div>
 
-	<div class='col-md-6'>
-		<!-- this is the form for posting -->
+	<d
 		<div class='postImage'>
 			<form data-ng-submit="create()" novalidate>
 			<textarea  name="description" data-ng-model="description" id="description" class="form-control" type='text' rows="2" placeholder="What's It about ?"></textarea>
@@ -62,8 +60,8 @@
 							<h4 class="list-group-item-heading" data-ng-bind="post.description"></h4>
 							
 							</div>
-							<!-- <p ng-click="addComment()">click</p>
- -->
+	
+
 							<form data-ng-submit='addComment()'>
 								<input class='col-md-12' type='text' placeholder='Comment ?'  data-ng-model='newComment'>
 								<input class='pull-right' type='submit' value='Post Comment' data-ng-click='addComment()'>
@@ -102,3 +100,4 @@
 				</section>
 		</div>
 </section>
+ -->

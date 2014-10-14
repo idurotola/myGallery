@@ -5,28 +5,23 @@
 	<div class=" col-md-12 centered">
 
 		<div id='postTile'><!-- start of tile -->
-		<a data-ng-repeat="post in posts" data-ng-href="#!/posts/{{post._id}}" class="myList-group-item portfolio-item  effect2" >
 
-  
-			<img class='imagePosted' ng-src="{{post.image[0].path}}" >  
+		<a data-ng-repeat="post in posts" data-ng-href="#!/posts/{{post._id}}" class="myList-group-item portfolio-item  effect2" >
+			<img class='imagePosted' ng-src="{{post.image[0].path}}" > 
+			<h4 class="list-group-item-heading myList-group-item-heading" data-ng-bind="post.fields"></h4> 
 			<div class="list-group-item">
-				<h4 class="list-group-item-heading" data-ng-bind="post.fields"></h4>
 			<small class="list-group-item-text">
 				@
 				<span data-ng-bind="post.user.displayName"></span>
 				on
-				<span data-ng-bind="post.created | date:'mediumDate'"></span>
-				
+				<span data-ng-bind="post.created | date:'mediumDate'"></span>	
 			</small>
-			
-			
 			<p class="list-group-item-text" data-ng-bind="post.description"></p>
 			</div>
 		</a>
 	</div><!-- end of tile -->
-
 	</div>
 	<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length">
-		No posts yet, why don't you <a href="/#!/posts/create">create one</a>?
+		No posts yet, why don't you <a href="/#!/">create one</a>?
 	</div>
 </section>

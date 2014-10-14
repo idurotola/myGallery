@@ -47,7 +47,7 @@ var PostSchema = new Schema({
 		trim: true
 	},
 
-	image: [{ //this could hold the link to our image posted
+	image: [{ 
 		path: {
 			type: String,
 			default:''
