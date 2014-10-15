@@ -80,36 +80,17 @@ exports.delete = function(req, res) {
 	});
 };
 
-/**
- * like a post
- */
-/*exports.likePost = function(req, res) {
-    var post = req.post;
-	post.likes += 1;
-
-	post.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: 'errorHandler.getErrorMessage(err)'
-			});
-		} else {
-			res.jsonp(post);
-		}
-	});
-};
-*/
 /******************************************
 			ANOTHER KIND OF LIKE
 ******************************************/
 exports.likePost2 = function(req, res) {
-	console.log('it entered');
   var post = req.post,
         like = req.body;
         like.user = req.user;
     var Liked = false; 
     
     if (req.user.id === post.user._id.toString()) { 
-        return res.send(400, {
+        return res.status(400).send({
                message: 'You cannot like your own post'
         });
     } else {

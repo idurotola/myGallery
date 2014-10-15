@@ -47,9 +47,9 @@
 		<div align= 'center'>
 		<ul>
 			<li ng-click='overlayClicked()'>
-				<a  class=''>Create</a>
+				<a>Create</a>
 			</li>
-				<a href="/#!/posts" class=''>
+				<a href="/#!/posts">
 					<li>
 							List Post
 					</li>
@@ -69,7 +69,6 @@
 					<div class="list-group">
 						<a data-ng-repeat="post in posts" class="list-group-item">
 							<div ng-click='showComments($index)'>
-
 							<small class="list-group-item-text">
 									Posted on
 									<span data-ng-bind="post.created | date:'mediumDate'"></span>
@@ -80,13 +79,14 @@
 							<img class='pull-right' style='width:12px;height:12px' src="/modules/core/img/delete1.png" data-ng-show="authentication.user._id == post.user._id" ng-click='deletePost();'>
 
 							<p class="list-group-item-text pull-right" style='margin-right:6px'data-ng-bind="post.fields"></p>
-							<img class='imagePosted' ng-src="{{post.image[0].path}}">
-							<h5 data-ng-bind="post.description"></h5>
-							
+								<img class='imagePosted' ng-src="{{post.image[0].path}}">
+							<div class='postDecription'>
+								<p class='list-group-item-text' data-ng-bind="post.description"></p>
+							</div>
 							</div>
 							
 							<form data-ng-submit='addComment($index)'>
-								<input class='col-md-12'type='text' placeholder='Comment ?' data-ng-model='newComment'>
+								<input class='col-md-12'type='text' placeholder='Write something about it' data-ng-model='newComment'>
 							</form>
 
 							<div>
@@ -95,7 +95,6 @@
 									,
 								<img src="/modules/core/img/comment.png" style='width:16px;height:16px'>
 								<span ng-bind='post.comments.length'></span>
-
 							</div>
 						</a>
 					</div>
@@ -108,6 +107,7 @@
 		</div><!-- end of col-md-6 -->
 
 		<div class='col-md-4 ' id='commentClass'>
+			<div class='list-group-item-text'>showing {{comments.length}} comment(s)</div>
 			<section >
 					<div class="list-group">
 						<a data-ng-repeat="comment in comments" class="list-group-item commentBox">

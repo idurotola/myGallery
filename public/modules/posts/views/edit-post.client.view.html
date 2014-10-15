@@ -2,30 +2,38 @@
 	<div class="page-header">
 		<h1>Edit Post</h1>
 	</div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="update(articleForm.$valid)" novalidate>
-			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid}">
-					<label class="control-label" for="title">Title</label>
-					<div class="controls">
-						<input name="title" type="text" data-ng-model="article.title" id="title" class="form-control" placeholder="Title" required>
+	<div class="col-md-8 editPost">
+		<form name="postform" class="form-horizontal" data-ng-submit="update(postForm.$valid)" novalidate>
+			<fieldset >
+				<div class="form-group" ng-class="{ 'has-error' : submitted && postForm.description.$invalid}">
+
+					<label class="control-label col-md-4" for="description">Description :</label>
+					<div class="controls col-md-8">
+						<input name="description" type="text" data-ng-model="post.description" class="form-control " placeholder="Description" required>
 					</div>
-					<div ng-show="submitted && articleForm.title.$invalid" class="help-block">
-						<p ng-show="articleForm.title.$error.required" class="text-danger">Title is required</p>
+					<div ng-show="submitted && post.description.$invalid" class="help-block">
+						<p ng-show="post.description.$error.required" class="text-danger">Description is required</p>
 					</div>
+			
+					<label class='col-md-4'>Category :</label>
+						<div class='col-md-8 pull-left controls'>
+						<select data-ng-model="post.fields">
+							<option></option>
+							<option>Sports</option>
+							<option>Politics</option>
+							<option>Relationship</option>
+							<option>Networking</option>
+							<option>Career</option>
+							<option>Religious</option>
+						</select>
+						</div>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid}">
-					<label class="control-label" for="content">Content</label>
-					<div class="controls">
-						<textarea name="content" data-ng-model="article.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
-					</div>
-					<div ng-show="submitted && articleForm.content.$invalid" class="help-block">
-						<p ng-show="articleForm.content.$error.required" class="text-danger">Content is required</p>
-					</div>
-				</div>
+
 				<div class="form-group">
-					<input type="submit" value="Update" class="btn btn-default">
+					<input type="submit" value="Update" class="btn btn-default"
+					ng-click='update()'>
 				</div>
+
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>

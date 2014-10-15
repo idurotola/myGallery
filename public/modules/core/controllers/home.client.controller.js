@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('posts').controller('PostsController', ['$scope','$http','$state', '$stateParams', '$location', 'Authentication', 'Posts',
-	function($scope,$http,$state ,$stateParams, $location, Authentication, Posts) {
+angular.module('posts').controller('PostsController', ['$scope','$http','$state', '$stateParams', '$location', 'Authentication', 'Posts','Comments',
+	function($scope,$http,$state ,$stateParams, $location, Authentication, Posts,Comments) {
 		$scope.authentication = Authentication;
 
 		$scope.showOverlay = false;
@@ -12,6 +12,7 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 		$scope.cancelPost = function () {
 			$scope.showOverlay = false;
 		};
+
 		$scope.create = function() {
 
 				var post = new Posts({
@@ -62,6 +63,8 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 
 		$scope.update = function() {
 			var post = $scope.post;
+			console.log(post);
+			alert('in edit already');
 			post.$update(function() {
 				$location.path('posts/' + post._id);
 			}, function(errorResponse) {
@@ -78,26 +81,25 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			$location.path('posts/' + this.post._id) ;	
 		};
 
-		/*this is to add comment*/
+		/*comment handler*/
 		$scope.addComment = function(index) {
-			var params = {
-			content : this.newComment
-			};
+
+			var comments = new Comments();
+			comments.content = this.newComment;
 			this.newComment = '';
-			var url = '/posts/'+ this.post._id +'/comments';
-			$http.post(url,params).success(function (data){
+			comments.$save({postId: this.post._id}
+			,function(data) {	
 				$scope.posts[index].comments = data.comments;
 				$scope.comments = data.comments;
-			});
+			});	
 		};
+		/*like handler*/
 		$scope.likeAble = function(index) {
 			var url = '/posts/'+ this.post._id +'/likes';
 			$http.put(url,{}).success(function(liked){
 			$scope.posts[index].likes = liked.likes;
 			});
 		};
-
-
 
 		$scope.find = function() {
 			$scope.posts = Posts.query();
