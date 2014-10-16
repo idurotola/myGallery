@@ -3,12 +3,27 @@
 ********************************/
 
 
-/*************************************
+/*************************************/
 ::-webkit-scrollbar { 
     display: none; 
-} hidding scroll bar
-**************************************/
-
+} 
+body, html { /* these are the default values, you can use any hex color value */
+    scrollbar-face-color: ThreeDFace;
+    scrollbar-shadow-color: ThreeDDarkShadow;
+    scrollbar-highlight-color: ThreeDHighlight;
+    scrollbar-3dlight-color: ThreeDLightShadow;
+    scrollbar-darkshadow-color: ThreeDDarkShadow;
+    scrollbar-track-color: Scrollbar;
+    scrollbar-arrow-color: ButtonText;
+}
+/****************hidding scroll bar**********************/
+#panel {
+	background-color: #dfdfdf;
+	border: 1px solid #888;
+	-webkit-box-shadow: 0 15px 10px #777;
+  	-moz-box-shadow: 0 15px 10px #777;
+ 	 box-shadow: 0 15px 10px #777;
+}
 .content {
 	margin-top: 50px;
 }
@@ -25,39 +40,17 @@
     /*border-color:#78FA89;*/
 }
 
-/*MY OWN STYLING STARTS HERE*/
-body {
-	background-color: #dbdbdb !important;
-	/*background: url(../img/bg3.jpg) no-repeat;*/
-	background-size: cover;
-}
-.updates
- {
- 	margin-top: 1%;
-	border-radius: 5px;
+.postItems{
+	cursor: pointer !important;
 }
 
-.updates ul 
-{
-	margin-right: 22%;
+/*MY OWN STYLING STARTS HERE*/
+body {
+	background-color: #d4d4d4 !important;
+	/*background: url(../img/bgtexture.png) no-repeat;*/
+	background-size: cover;
 }
-.updates ul li {
-	display: inline-block;
-	width: 30%;
-	background-color: rgba(255,255,255,.4);
-	color: #888 !important;
-	text-decoration: none;
-}
-.updates a
- {
-	text-decoration: none;
-	color:#888;
-}
-.updates li:hover
- {
-	text-decoration: none;
-	background-color: white;
-}
+
 #overlay
 {
 width: 100%;
@@ -82,6 +75,21 @@ right:25%;
 z-index: 20;
 border-radius: 5px
 }
+.editPost {
+	padding-top: 15px;
+	padding-left: 20px;
+	background-color:#4074B0;
+	height: 150px;
+	border-radius: 10px;
+	color: white;
+}
+.editPost select {
+	color: #555;
+}
+.editPost label {
+	padding-top: 7px;
+	border-bottom: 1px solid white;
+}
 form>ul>li {
 	text-decoration: none;
 	list-style: none;
@@ -96,6 +104,46 @@ form>ul>li {
 form>ul>li label {
 	color: #fff;
 }
+/***************************
+		DASHBOARD
+***************************/
+.dashBoard {
+	background-color: white;
+	border-radius: 5px;
+	margin-bottom: 2%;
+	border: 1px solid #bbb;
+	margin-top: 1%;
+	color: #888;
+	-webkit-box-shadow: 0 2px 4px #aaa;
+  	-moz-box-shadow: 0 2px 4px #aaa;
+ 	 box-shadow: 0 2px 4px #aaa;
+}
+.dashBoard>img {
+	/*background-color: #eee;*/
+	text-align: center;
+	margin-bottom: 1%;
+	margin-top: 1%;
+}
+.updates
+ {
+	border-radius: 5px;
+}
+
+.updates ul 
+{
+	margin-top: 50%;
+}
+.updates ul li {
+	display: inline-block;
+	/*background-color: rgba(255,255,255,.4);*/
+	/*text-decoration: none;*/
+}
+
+
+
+
+
+/*************************/
 #description {
 	padding-bottom: 15px;
 	margin-top: 1%;
@@ -140,12 +188,7 @@ select
 
 }
 #listTile a{
-	width: 18%;
-	display: inline-block;
-	margin:3px 5px; 
-	border-top: 15px;
-	text-decoration: none;
-	padding: 2px;
+	text-decoration: none;	
 }
 #listTile img{
 	height:150px;
@@ -158,7 +201,7 @@ select
 /***************************
 		COMMENTS
 ***************************/
-.list-group{
+.post-group{
 	overflow-y:auto;
 	height: 500px; 
 }
@@ -167,12 +210,15 @@ select
 	color: #666 !important;
 }
 .commentBox {
-	background-color: rgba(255,255,255,.6);
-	border-left: 3px solid #888;
+	background-color: rgba(255,255,255,.0) !important;
+	border-left: 3px solid #888 !important;
+	border: none;
+	border-bottom: 1px solid #888;
 }
 .commentBox:hover {
-	background-color: rgba(200,200,250,.2) !important;
+	/*background-color: rgba(200,200,250,.2) !important;*/
 	border-right: 3px solid #888;
+	border-left: 3px solid #88e !important;
 }
 a.myList-group-item {
 	color: #555;
@@ -183,12 +229,7 @@ a.myList-group-item {
 input[type=file]{
 	color: white;
 }
-.displayName {
-	width: 100%;
-	background-color: tomato;
-	text-align: center;
 
-}
 .myList-group-item-heading {
 	width: 100%;
 	/*background-color: rgba(20,20,20,.2);*/
@@ -212,9 +253,6 @@ input[type=file]{
 	opacity: 1;
 	padding-top: 30px;
 	transition:.3s;
-}
-.editPost {
-	background-color: steelblue;
 }
 /*==================================================
  * Effect 2
@@ -259,4 +297,12 @@ input[type=file]{
 	border-top-right-radius: 4px;
 	border-top-left-radius: 4px;
 	border-bottom: 1px solid #aaa;
+	color:#666;
+}
+.comment-group {
+	background-color: #eee;
+	height: 470px;
+}
+.comment-group a {
+
 }

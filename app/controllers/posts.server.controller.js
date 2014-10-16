@@ -88,20 +88,34 @@ exports.likePost2 = function(req, res) {
         like = req.body;
         like.user = req.user;
     var Liked = false; 
+    var num = 0;
     
-    if (req.user.id === post.user._id.toString()) { 
+    console.log('in the loop');
+
+    if (req.user.id.toString() === post.user._id.toString()) { 
+    	console.log(req.user.id);
+    	console.log(post.user._id.toString());
+    		console.log('same loop');
         return res.status(400).send({
                message: 'You cannot like your own post'
         });
     } else {
+
         for(var i = 0; i < post.likes.length; i++) {
            if (req.user.id === post.likes[i].user.toString()) {
                Liked = true;
+               num = i;
                break;
+
             }
         }
         if (!Liked) {
             post.likes.push(like);
+             } 
+        			else {
+					        	post.likes.splice(num,1);
+					        	console.log('spliced');
+					        }
 
             post.save(function(err) {
                if (err) {
@@ -112,12 +126,7 @@ exports.likePost2 = function(req, res) {
                     res.jsonp(post);
                 }
             });
-        } 
-        else {
-            return res.status(400).send({
-               message: 'you have already liked this post before'
-            });
-        }
+
     }
 };
 

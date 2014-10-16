@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('posts').controller('PostsController', ['$scope','$http','$state', '$stateParams', '$location', 'Authentication', 'Posts','Comments',
-	function($scope,$http,$state ,$stateParams, $location, Authentication, Posts,Comments) {
+angular.module('posts').controller('PostsController', ['$scope','$http','$state', '$stateParams', '$location', 'Authentication', 'Posts','Comments','Like',
+	function($scope,$http,$state ,$stateParams, $location, Authentication, Posts,Comments,Like) {
 		$scope.authentication = Authentication;
 
 		$scope.showOverlay = false;
@@ -63,8 +63,6 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 
 		$scope.update = function() {
 			var post = $scope.post;
-			console.log(post);
-			alert('in edit already');
 			post.$update(function() {
 				$location.path('posts/' + post._id);
 			}, function(errorResponse) {
@@ -87,19 +85,64 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			var comments = new Comments();
 			comments.content = this.newComment;
 			this.newComment = '';
-			comments.$save({postId: this.post._id}
-			,function(data) {	
+			comments.$save(
+				{
+					postId: this.post._id
+				},
+				function(data) {	
 				$scope.posts[index].comments = data.comments;
 				$scope.comments = data.comments;
 			});	
 		};
 		/*like handler*/
-		$scope.likeAble = function(index) {
+	/*	$scope.likeAble = function(index) {
+			var like = $scope.posts[index];
+			console.log(like.likes);
+			if(like.user._id === window.user._id.toString())
+			{
+				console.log('u created this post');
+			}
 			var url = '/posts/'+ this.post._id +'/likes';
 			$http.put(url,{}).success(function(liked){
+				console.log(liked);
 			$scope.posts[index].likes = liked.likes;
+
 			});
+		};*/
+		/**********************************
+						ANOTHER LIKE
+		**********************************/
+		$scope.likeAble = function(index) {
+			var likePost = new Like();
+			likePost.$update(
+				{
+					postId: this.post._id
+				},function(data){
+					console.log(data.likes.length);
+					$scope.posts[index].likes = data.likes;
+			});
+
 		};
+
+		//check if already liked
+
+		$scope.alreadyLiked = function(index){
+			var likeArray = $scope.posts[index];
+			var like = $scope.posts[index];
+			for(var i=0; i<=like.likes.length; i++){
+				if(like.likes[i].user === window.user._id.toString())
+					{
+						return 1;	
+					} 
+					else 
+						{
+							return 0;
+						}
+			}
+		};
+
+
+		/*********************************/
 
 		$scope.find = function() {
 			$scope.posts = Posts.query();
@@ -109,6 +152,7 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			$scope.post = Posts.get({
 				postId: $stateParams.postId
 			});
+			
 		};
 	}
 ]);

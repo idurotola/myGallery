@@ -18,9 +18,22 @@ var myApp = angular.module('posts');
 	]);
 	myApp.factory('Comments', ['$resource',
 		function($resource) {
-			console.log('ddddddd');
 			return $resource('posts/:postId/comments', 	
 			{ postId: '@_id'
+			});
+		}
+	]);
+	/*for likes*/
+	myApp.factory('Like', ['$resource',
+		function($resource) {
+			return $resource('posts/:postId/likes', 	
+			{ 
+				postId: '@_id'
+			}, 
+			{
+				update: {
+					method: 'PUT'
+				}
 			});
 		}
 	]);
