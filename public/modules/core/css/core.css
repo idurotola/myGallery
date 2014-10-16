@@ -50,6 +50,9 @@ body {
 	/*background: url(../img/bgtexture.png) no-repeat;*/
 	background-size: cover;
 }
+header {
+	border-bottom: 20px solid #3173AB;
+}
 
 #overlay
 {

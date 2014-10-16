@@ -90,7 +90,8 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 					postId: this.post._id
 				},
 				function(data) {	
-				$scope.posts[index].comments = data.comments;
+				$scope.posts[index].
+				comments = data.comments;
 				$scope.comments = data.comments;
 			});	
 		};
@@ -129,16 +130,23 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 		$scope.alreadyLiked = function(index){
 			var likeArray = $scope.posts[index];
 			var like = $scope.posts[index];
-			for(var i=0; i<=like.likes.length; i++){
-				if(like.likes[i].user === window.user._id.toString())
-					{
-						return 1;	
-					} 
-					else 
-						{
-							return 0;
-						}
+			if(likeArray.likes.length<1)
+				{
+					return 0;
 			}
+			else {
+						for(var i=0; i<=like.likes.length; i++){
+							if(like.likes[i].user === window.user._id.toString())
+								{
+									return 1;	
+									break
+								} 
+								else 
+									{
+										return 0;
+										break
+								}
+						}}
 		};
 
 
