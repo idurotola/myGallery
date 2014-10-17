@@ -4,61 +4,71 @@
 </div> -->
 <section data-ng-controller="PostsController" data-ng-init="find()">
 	<div data-ng-hide="authentication.user._id">
-		
-
-		<div class='col-md-12 cols-xs-12 ' id='previewPage'>
-			<a data-ng-repeat="post in posts" class=" col-md-2 thumbnail">
-					<img ng-src="{{post.image[0].path}}" style='display:block'>
-			</a>
-		</div>
-
 		<div class='col-md-12 cols-xs-12' id='previewInfo'>
+
 			<div class='previewInfo'>
+				<img src="/modules/core/img/artistic.png">
 				<h2>...Create | Share | Comment | Improve...</h2>
 				<h1>World of Art</h1>
 				<a href="/#!/signup">Sign Up</a>
 				<a href="/#!/signin">Sign In</a>
 			</div>
 		</div>
+
+		<div class='col-md-12 cols-xs-12 ' id='previewPage'>
+			<a data-ng-repeat="post in posts" class=" col-md-2 col-xs-6 thumbnail">
+					<img ng-src="{{post.image[0].path}}" style='display:block'>
+			</a>
+		</div>
 	</div>
 
 <section data-ng-show="authentication.user._id"  class='col-md-10 col-md-offset-1' id='panel'>
 	<div id="overlay" ng-show="showOverlay">
-		<div id='newPost' class='col-md-6'><!-- start of upload -->
+		<div id='newPost' class='col-md-6 col-xs-12  col-md-offset-3'><!-- start of upload -->
 			<div class='deleteIcon pull-right' ng-click='cancelPost()'></div>
-			<div class='postImage'>
 			<form data-ng-submit="create()" novalidate>
 				<ul>
-				<li >
-					<div id="description">
-					<label>Description :</label>
-				  <textarea class='col-md-6' name="description" data-ng-model="description" class="form-control"type='text' rows="1" placeholder="What's It about ?"></textarea>
+				<li>
+					<div id="description" class="form-group">
+					<label class="col-xs-6 control-label">Description :</label>
+					<div class="col-xs-10">
+				 		<input name="description" data-ng-model="description" class="form-control"type='text' rows="1" placeholder="What's It about ?"></input>
+				 	</div>
 				  </div>
 			  </li>
 
 				<li>
-					<label>Category :</label>
-					<select data-ng-model="fields">
-						<option></option>
-						<option>Paintings</option>
-						<option>Photography</option>
-						<option>Selfie</option>
-						<option>Sculpture</option>
-						<option>Landscape</option>
-						<option>Abstract</option>
-					</select>
+					<div class="form-group">
+						<label class="col-xs-6 control-label">Category :</label>
+							<div class="col-xs-10">
+								<select data-ng-model="fields" class="col-xs-10">
+									<option></option>
+									<option>Paintings</option>
+									<option>Photography</option>
+									<option>Selfie</option>
+									<option>Sculpture</option>
+									<option>Landscape</option>
+									<option>Abstract</option>
+								</select>
+							</div>
+						</div>
 					</li>
 
 					<li>
-						<label class='pull-left'>Upload an Image :</label>
-						<input data-ng-model="image" class='pull-left imageLoad' type='file' data-ng-file-select="onFileSelect($files)" class="form-control" accept="image/*" required>
+						<div class="form-group"> 
+							<label class="col-sm-2 col-md-4 control-label">Upload an Image :</label>
+
+							<div class="col-sm-10">
+								<input data-ng-model="image" class='imageLoad col-sm-10' type='file' data-ng-file-select="onFileSelect($files)" class="form-control" accept="image/*" required>
+							</div>
+						</div>
 					</li>
 
 					<input type='submit' value='Upload' id='uploadBtn'>
 
 			</ul>
 			</form>
-			</div><!-- end of upload -->
+			<!-- end of upload -->
 		</div>
 	</div>
 
@@ -66,10 +76,8 @@
 
 	<div class='col-md-12 topBar dashBoard center'>		
 		<img class='imagePosted  img-thumbnail col-md-2' ng-src="{{authentication.user.profile[0].path}}">
-		<div class='col-md-6'>
-			<!-- <label>Name :</label> -->
+		<div class='col-md-6'>	
 			<h2 data-ng-bind='authentication.user.displayName' class='displayName'></h2>
-		<!-- 	<label>Email :</label> -->
 			<p data-ng-bind='authentication.user.email'></p>
 		</div>
 		<div class='updates col-md-6 col-md-offset-9'>
@@ -78,16 +86,15 @@
 						<a class='btn btn-primary'>Create</a>
 					</li>
 						<a href="/#!/posts" >
-							<li class='btn btn-primary'>
-									List Post
-							</li>
+					<li class='btn btn-primary'>
+							List Post
+					</li>
 						</a>
 				</ul>
 		</div>
 	</div>
 
 	<div>
-			<div>
 				<section>	
 					<div class="list-group post-group col-md-7 col-xs-12">
 						<a data-ng-repeat="post in posts" class="list-group-item postItems ">
@@ -112,9 +119,8 @@
 								<input class='col-md-12'type='text' placeholder='Write something about it' data-ng-model='newComment'>
 							</form>
 
-							<div style='font-size:13px;color:#3173AB'>
-								 <img ng-src='/modules/core/img/love.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-if='alreadyLiked($index) === 0'>
-								<img ng-src='/modules/core/img/nolove.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-if='alreadyLiked($index) === 1'>
+							<div style='font-size:13px;'>
+								<i data-ng-click='likeAble($index)' class='glyphicon glyphicon-heart' style="color:#95A4D4"></i>
 								<span ng-bind="post.likes.length"></span> 
 									Like(s),
 								<img src="/modules/core/img/comment.png" style='width:16px;height:16px'>
@@ -126,8 +132,6 @@
 						No posts yet, why don't you <a>create one</a>?
 					</div>
 				</section>
-		</div>
-
 		</div><!-- end of col-md-6 -->
 
 		<div class='col-md-5 col-xs-12' id='commentClass'>

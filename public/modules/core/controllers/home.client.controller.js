@@ -5,6 +5,9 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 		$scope.authentication = Authentication;
 
 		$scope.showOverlay = false;
+		$scope.love = false;
+		$scope.nolove = false;
+
 
 		$scope.overlayClicked = function () {
 			$scope.showOverlay = true;
@@ -96,21 +99,6 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 				$scope.comments = data.comments;
 			});	
 		};
-		/*like handler*/
-	/*	$scope.likeAble = function(index) {
-			var like = $scope.posts[index];
-			console.log(like.likes);
-			if(like.user._id === window.user._id.toString())
-			{
-				console.log('u created this post');
-			}
-			var url = '/posts/'+ this.post._id +'/likes';
-			$http.put(url,{}).success(function(liked){
-				console.log(liked);
-			$scope.posts[index].likes = liked.likes;
-
-			});
-		};*/
 		/**********************************
 						ANOTHER LIKE
 		**********************************/
@@ -120,40 +108,11 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 				{
 					postId: this.post._id
 				},function(data){
-					console.log(data.likes.length);
-					$scope.posts[index].likes = data.likes;
+
+					$scope.posts[index].likes = data.likes;	
 			});
-
 		};
-
-		//check if already liked
-
-		$scope.alreadyLiked = function(index){
-			var likeArray = $scope.posts[index];
-			var like = $scope.posts[index];
-			if(likeArray.likes.length<1)
-				{
-					return 0;
-				}
-			else{
-						for(var i=0; i<like.likes.length; i++){
-					if(like.likes[i].user.toString() === window.user._id.toString())
-								{
-									return 1;	
-									break;
-								} 
-								else 
-									{
-										return 0;
-										break;
-								}
-							}
-						}
-		};
-
-
-		/*********************************/
-
+		
 		$scope.find = function() {
 			$scope.posts = Posts.query();
 		};
@@ -162,7 +121,6 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			$scope.post = Posts.get({
 				postId: $stateParams.postId
 			});
-			
 		};
 	}
 ]);

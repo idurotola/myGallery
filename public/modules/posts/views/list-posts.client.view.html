@@ -1,6 +1,6 @@
 <section data-ng-controller="PostsController" data-ng-init="find()">
 	<div class="page-header">
-		<h1>Art Gallery</h1>
+		<h1>Gallery</h1>
 	</div>
 	<div class=" col-md-12 centered">
 
@@ -19,7 +19,6 @@
 				on
 				<span data-ng-bind="post.created | date:'mediumDate'"></span>	
 			</small>
-			<!-- <p class="list-group-item-text" data-ng-bind="post.description"></p> -->
 		<br>
 		<img ng-src='/modules/core/img/love.png' style='width:16px;height:16px'>
 			<span ng-bind="post.likes.length"></span>
