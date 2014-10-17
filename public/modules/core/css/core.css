@@ -47,13 +47,61 @@ body, html { /* these are the default values, you can use any hex color value */
 /*MY OWN STYLING STARTS HERE*/
 body {
 	background-color: #d4d4d4 !important;
-	/*background: url(../img/bgtexture.png) no-repeat;*/
+	/*background: url(../img/bgMain.jpg) no-repeat;*/
 	background-size: cover;
 }
 header {
 	border-bottom: 20px solid #3173AB;
 }
+#previewPage {
+	margin-top:70px;
+	/*background: url(../img/bgMain.jpg) no-repeat;*/
+	background-size: cover;
+}
+#previewInfo {
+	width: 100%;
+	height:100%;
+	position:absolute;
+	z-index: 100;
+	top:20;
+	left:0;
+	text-align: center;
+	color: white;
+	background:rgba(0,0,0,.5);
+	border-radius: 10px;
+	border: 2px solid #888;
+	font-family: monospace;
+}
+#previewInfo a{
+	border: 2px solid steelblue;
+	padding: 5px 15px;
+	border-radius: 2px;
+	text-decoration: none;
+	background-color: white;
+	font-weight: 600;
+	transition:.3s;
+	font-family: monospace;
+}
+#previewInfo a{
+	margin-right: 5px;
+}
+.previewInfo  {
+	padding-top: 300px;
+}
+#previewInfo a:hover{
+	background-color: steelblue;
+	color: white;
+}
+#previewInfo h1:hover{color: steelblue;}
 
+#previewPage a {
+	height: 150px;
+}
+#previewPage img {
+	width: 100%;
+	height: 100%;
+	padding:1px 1px !important;
+}
 #overlay
 {
 width: 100%;
@@ -81,17 +129,16 @@ border-radius: 5px
 .editPost {
 	padding-top: 15px;
 	padding-left: 20px;
-	background-color:#4074B0;
-	height: 150px;
-	border-radius: 10px;
-	color: white;
+	background-color:#eef;
+	min-height: 200px;
+	border-radius: 3px;
+	color: #555;
+  	-webkit-box-shadow: 0 2px 10px #777;
+  	-moz-box-shadow: 0 2px 10px #777;
+  	box-shadow: 0 2px 10px #777;
 }
 .editPost select {
 	color: #555;
-}
-.editPost label {
-	padding-top: 7px;
-	border-bottom: 1px solid white;
 }
 form>ul>li {
 	text-decoration: none;
@@ -132,14 +179,13 @@ form>ul>li label {
 	border-radius: 5px;
 }
 
-.updates ul 
+/*.dashBoard ul 
 {
 	margin-top: 50%;
-}
-.updates ul li {
+}*/
+.dashBoard ul li {
 	display: inline-block;
-	/*background-color: rgba(255,255,255,.4);*/
-	/*text-decoration: none;*/
+	list-style: none;
 }
 
 

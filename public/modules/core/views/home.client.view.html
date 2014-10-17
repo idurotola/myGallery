@@ -2,8 +2,27 @@
 <!-- <div data-ng-hide="authentication.user._id">
 	show a front page that will promp user to sign in to be able to post
 </div> -->
+<section data-ng-controller="PostsController" data-ng-init="find()">
+	<div data-ng-hide="authentication.user._id">
+		
 
-<section data-ng-controller="PostsController" data-ng-show="authentication.user._id" data-ng-init="find()" class='col-md-10 col-md-offset-1' id='panel'>
+		<div class='col-md-12 cols-xs-12 ' id='previewPage'>
+			<a data-ng-repeat="post in posts" class=" col-md-2 thumbnail">
+					<img ng-src="{{post.image[0].path}}" style='display:block'>
+			</a>
+		</div>
+
+		<div class='col-md-12 cols-xs-12' id='previewInfo'>
+			<div class='previewInfo'>
+				<h2>...Create | Share | Comment | Improve...</h2>
+				<h1>World of Art</h1>
+				<a href="/#!/signup">Sign Up</a>
+				<a href="/#!/signin">Sign In</a>
+			</div>
+		</div>
+	</div>
+
+<section data-ng-show="authentication.user._id"  class='col-md-10 col-md-offset-1' id='panel'>
 	<div id="overlay" ng-show="showOverlay">
 		<div id='newPost' class='col-md-6'><!-- start of upload -->
 			<div class='deleteIcon pull-right' ng-click='cancelPost()'></div>
@@ -21,12 +40,12 @@
 					<label>Category :</label>
 					<select data-ng-model="fields">
 						<option></option>
-						<option>Sports</option>
-						<option>Politics</option>
-						<option>Relationship</option>
-						<option>Networking</option>
-						<option>Career</option>
-						<option>Religious</option>
+						<option>Paintings</option>
+						<option>Photography</option>
+						<option>Selfie</option>
+						<option>Sculpture</option>
+						<option>Landscape</option>
+						<option>Abstract</option>
 					</select>
 					</li>
 
@@ -53,7 +72,7 @@
 		<!-- 	<label>Email :</label> -->
 			<p data-ng-bind='authentication.user.email'></p>
 		</div>
-		<div class='updates pull-right'>
+		<div class='updates col-md-6 col-md-offset-9'>
 				<ul>
 					<li ng-click='overlayClicked()'>
 						<a class='btn btn-primary'>Create</a>
@@ -67,11 +86,11 @@
 		</div>
 	</div>
 
-	<div class='col-md-7 col-sm-8'>
+	<div>
 			<div>
 				<section>	
-					<div class="list-group post-group">
-						<a data-ng-repeat="post in posts" class="list-group-item postItems">
+					<div class="list-group post-group col-md-7 col-xs-12">
+						<a data-ng-repeat="post in posts" class="list-group-item postItems ">
 							<div ng-click='showComments($index)'>
 							<small class="list-group-item-text">
 									Posted on
@@ -94,8 +113,8 @@
 							</form>
 
 							<div style='font-size:13px;color:#3173AB'>
-								 <img ng-src='/modules/core/img/love.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-show='alreadyLiked($index) === 0'>
-								<img ng-src='/modules/core/img/nolove.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-show='alreadyLiked($index) === 1'>
+								 <img ng-src='/modules/core/img/love.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-if='alreadyLiked($index) === 0'>
+								<img ng-src='/modules/core/img/nolove.png' style='width:16px;height:16px' data-ng-click='likeAble($index)' ng-if='alreadyLiked($index) === 1'>
 								<span ng-bind="post.likes.length"></span> 
 									Like(s),
 								<img src="/modules/core/img/comment.png" style='width:16px;height:16px'>
@@ -111,7 +130,7 @@
 
 		</div><!-- end of col-md-6 -->
 
-		<div class='col-md-5 col-sm-4' id='commentClass'>
+		<div class='col-md-5 col-xs-12' id='commentClass'>
 
 		<div class='list-group-item-text'>showing {{comments.length}} comment(s)</div>
 
@@ -133,4 +152,5 @@
 					</div>
 				</section>
 		</div>
+</section>
 </section>

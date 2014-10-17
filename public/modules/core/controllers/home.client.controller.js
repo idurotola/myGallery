@@ -25,6 +25,7 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 
 				post.$save(function(response) {
 					$scope.description = '';
+					$scope.fields = '';
 					$scope.showOverlay = false;
 					$scope.find();
 				}, function(errorResponse) {
@@ -133,20 +134,21 @@ angular.module('posts').controller('PostsController', ['$scope','$http','$state'
 			if(likeArray.likes.length<1)
 				{
 					return 0;
-			}
-			else {
-						for(var i=0; i<=like.likes.length; i++){
-							if(like.likes[i].user === window.user._id.toString())
+				}
+			else{
+						for(var i=0; i<like.likes.length; i++){
+					if(like.likes[i].user.toString() === window.user._id.toString())
 								{
 									return 1;	
-									break
+									break;
 								} 
 								else 
 									{
 										return 0;
-										break
+										break;
 								}
-						}}
+							}
+						}
 		};
 
 
