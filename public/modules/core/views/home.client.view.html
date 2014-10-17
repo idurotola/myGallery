@@ -1,160 +1,161 @@
-
 <!-- <div data-ng-hide="authentication.user._id">
 	show a front page that will promp user to sign in to be able to post
 </div> -->
 <section data-ng-controller="PostsController" data-ng-init="find()">
-	<div data-ng-hide="authentication.user._id">
-		<div class='col-md-12 cols-xs-12' id='previewInfo'>
+    <div data-ng-hide="authentication.user._id">
+        <div class='col-md-12 cols-xs-12' id='previewInfo'>
 
-			<div class='previewInfo'>
-				<img src="/modules/core/img/artistic.png">
-				<h2>...Create | Share | Comment | Improve...</h2>
-				<h1>World of Art</h1>
-				<a href="/#!/signup">Sign Up</a>
-				<a href="/#!/signin">Sign In</a>
-			</div>
-		</div>
+            <div class='previewInfo'>
+                <img src="/modules/core/img/artistic.png">
+                <h2>...Create | Share | Comment | Improve...</h2>
+                <h1>World of Art</h1>
+                <a href="/#!/signup">Sign Up</a>
+                <a href="/#!/signin">Sign In</a>
+            </div>
+        </div>
 
-		<div class='col-md-12 cols-xs-12 ' id='previewPage'>
-			<a data-ng-repeat="post in posts" class=" col-md-2 col-xs-6 thumbnail">
-					<img ng-src="{{post.image[0].path}}" style='display:block'>
-			</a>
-		</div>
-	</div>
+        <div class='col-md-12 cols-xs-12 ' id='previewPage' style='margin-top:20px'>
+            <a data-ng-repeat="post in posts" class=" col-md-2 col-xs-6 thumbnail">
+                <img ng-src="{{post.image[0].path}}" style='display:block'>
+            </a>
+        </div>
+    </div>
 
-<section data-ng-show="authentication.user._id"  class='col-md-10 col-md-offset-1' id='panel'>
-	<div id="overlay" ng-show="showOverlay">
-		<div id='newPost' class='col-md-6 col-xs-12  col-md-offset-3'><!-- start of upload -->
-			<div class='deleteIcon pull-right' ng-click='cancelPost()'></div>
-			<form data-ng-submit="create()" novalidate>
-				<ul>
-				<li>
-					<div id="description" class="form-group">
-					<label class="col-xs-6 control-label">Description :</label>
-					<div class="col-xs-10">
-				 		<input name="description" data-ng-model="description" class="form-control"type='text' rows="1" placeholder="What's It about ?"></input>
-				 	</div>
-				  </div>
-			  </li>
+    <section data-ng-show="authentication.user._id" class='col-md-10 col-md-offset-1' id='panel'>
+        <div id="overlay" ng-show="showOverlay">
+            <div id='newPost' class='col-md-6 col-xs-12  col-md-offset-3'>
+                <!-- start of upload -->
+                <div class='deleteIcon pull-right' ng-click='cancelPost()'></div>
+                <form data-ng-submit="create()" novalidate>
+                    <ul>
+                        <li>
+                            <div id="description" class="form-group">
+                                <label class="col-xs-6 control-label">Description :</label>
+                                <div class="col-xs-10">
+                                    <input name="description" data-ng-model="description" class="form-control" type='text' rows="1" placeholder="What's It about ?"></input>
+                                </div>
+                            </div>
+                        </li>
 
-				<li>
-					<div class="form-group">
-						<label class="col-xs-6 control-label">Category :</label>
-							<div class="col-xs-10">
-								<select data-ng-model="fields" class="col-xs-10">
-									<option></option>
-									<option>Paintings</option>
-									<option>Photography</option>
-									<option>Selfie</option>
-									<option>Sculpture</option>
-									<option>Landscape</option>
-									<option>Abstract</option>
-								</select>
-							</div>
-						</div>
-					</li>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-xs-6 control-label">Category :</label>
+                                <div class="col-xs-10">
+                                    <select data-ng-model="fields" class="col-xs-10">
+                                        <option></option>
+                                        <option>Paintings</option>
+                                        <option>Photography</option>
+                                        <option>Selfie</option>
+                                        <option>Sculpture</option>
+                                        <option>Landscape</option>
+                                        <option>Abstract</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
 
-					<li>
-						<div class="form-group"> 
-							<label class="col-sm-2 col-md-4 control-label">Upload an Image :</label>
+                        <li>
+                            <div class="form-group">
+                                <label class="col-sm-2 col-md-4 control-label">Upload an Image :</label>
 
-							<div class="col-sm-10">
-								<input data-ng-model="image" class='imageLoad col-sm-10' type='file' data-ng-file-select="onFileSelect($files)" class="form-control" accept="image/*" required>
-							</div>
-						</div>
-					</li>
+                                <div class="col-sm-10">
+                                    <input data-ng-model="image" class='imageLoad col-sm-10' type='file' data-ng-file-select="onFileSelect($files)" class="form-control" accept="image/*" required>
+                                </div>
+                            </div>
+                        </li>
 
-					<input type='submit' value='Upload' id='uploadBtn'>
+                        <input type='submit' value='Upload' id='uploadBtn'>
 
-			</ul>
-			</form>
-			<!-- end of upload -->
-		</div>
-	</div>
+                    </ul>
+                </form>
+                <!-- end of upload -->
+            </div>
+        </div>
 
-	
 
-	<div class='col-md-12 topBar dashBoard center'>		
-		<img class='imagePosted  img-thumbnail col-md-2' ng-src="{{authentication.user.profile[0].path}}">
-		<div class='col-md-6'>	
-			<h2 data-ng-bind='authentication.user.displayName' class='displayName'></h2>
-			<p data-ng-bind='authentication.user.email'></p>
-		</div>
-		<div class='updates col-md-6 col-md-offset-9'>
-				<ul>
-					<li ng-click='overlayClicked()'>
-						<a class='btn btn-primary'>Create</a>
-					</li>
-						<a href="/#!/posts" >
-					<li class='btn btn-primary'>
-							List Post
-					</li>
-						</a>
-				</ul>
-		</div>
-	</div>
 
-	<div>
-				<section>	
-					<div class="list-group post-group col-md-7 col-xs-12">
-						<a data-ng-repeat="post in posts" class="list-group-item postItems ">
-							<div ng-click='showComments($index)'>
-							<small class="list-group-item-text">
-									Posted on
-									<span data-ng-bind="post.created | date:'mediumDate'"></span>
-									by
-									<span data-ng-bind="post.user.displayName"></span>
-							</small>
+        <div class='col-md-12 topBar dashBoard center'>
+            <img class='imagePosted  img-thumbnail col-md-2' ng-src="{{authentication.user.profile[0].path}}">
+            <div class='col-md-6'>
+                <h2 data-ng-bind='authentication.user.displayName' class='displayName'></h2>
+                <p data-ng-bind='authentication.user.email'></p>
+            </div>
+            <div class='updates col-md-6 col-md-offset-9'>
+                <ul>
+                    <li ng-click='overlayClicked()'>
+                        <a class='btn btn-primary'>Create</a>
+                    </li>
+                    <a href="/#!/posts">
+                        <li class='btn btn-primary'>
+                            List Post
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
 
-							<img class='pull-right' style='width:12px;height:12px' src="/modules/core/img/delete1.png" data-ng-show="authentication.user._id == post.user._id" ng-click='deletePost();'>
+        <div>
+            <section>
+                <div class="list-group post-group col-md-7 col-xs-12">
+                    <a data-ng-repeat="post in posts" class="list-group-item postItems ">
+                        <div ng-click='showComments($index)'>
+                            <small class="list-group-item-text">
+                                Posted on
+                                <span data-ng-bind="post.created | date:'mediumDate'"></span>
+                                by
+                                <span data-ng-bind="post.user.displayName"></span>
+                            </small>
 
-							<p class="list-group-item-text pull-right" style='margin-right:6px'data-ng-bind="post.fields"></p>
-								<img class='imagePosted' ng-src="{{post.image[0].path}}" style='display:block'>
-							<div class='postDecription'>
-								<p class='list-group-item-text' data-ng-bind="post.description"></p>
-							</div>
-							</div>
-							
-							<form data-ng-submit='addComment($index)'>
-								<input class='col-md-12'type='text' placeholder='Write something about it' data-ng-model='newComment'>
-							</form>
+                            <img class='pull-right' style='width:12px;height:12px' src="/modules/core/img/delete1.png" data-ng-show="authentication.user._id == post.user._id" ng-click='deletePost();'>
 
-							<div style='font-size:13px;'>
-								<i data-ng-click='likeAble($index)' class='glyphicon glyphicon-heart' style="color:#95A4D4"></i>
-								<span ng-bind="post.likes.length"></span> 
-									Like(s),
-								<img src="/modules/core/img/comment.png" style='width:16px;height:16px'>
-								<span ng-bind='post.comments.length'></span>
-							</div>
-						</a>
-					</div>
-					<div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length" ng-click='overlayClicked()'>
-						No posts yet, why don't you <a>create one</a>?
-					</div>
-				</section>
-		</div><!-- end of col-md-6 -->
+                            <p class="list-group-item-text pull-right" style='margin-right:6px' data-ng-bind="post.fields"></p>
+                            <img class='imagePosted' ng-src="{{post.image[0].path}}" style='display:block'>
+                            <div class='postDecription'>
+                                <p class='list-group-item-text' data-ng-bind="post.description"></p>
+                            </div>
+                        </div>
 
-		<div class='col-md-5 col-xs-12' id='commentClass'>
+                        <form data-ng-submit='addComment($index)'>
+                            <input class='col-md-12' type='text' placeholder='Write something about it' data-ng-model='newComment'>
+                        </form>
 
-		<div class='list-group-item-text'>showing {{comments.length}} comment(s)</div>
+                        <div style='font-size:13px;'>
+                            <i data-ng-click='likeAble($index)' class='glyphicon glyphicon-heart' style="color:#95A4D4"></i>
+                            <span ng-bind="post.likes.length"></span>
+                            Like(s),
+                            <img src="/modules/core/img/comment.png" style='width:16px;height:16px;background-color:#95A4D4'>
+                            <span ng-bind='post.comments.length'></span>
+                        </div>
+                    </a>
+                </div>
+                <div class="alert alert-warning text-center" data-ng-if="posts.$resolved && !posts.length" ng-click='overlayClicked()'>
+                    No posts yet, why don't you <a>create one</a>?
+                </div>
+            </section>
+        </div>
+        <!-- end of col-md-6 -->
 
-			<section >
-					<div class=" comment-group">
-						<div ng-show='!comments.length' class="alert alert-info list-group-item-texts" style='text-align:center'>
-							Why not add a comment
-						</div>
-						<a data-ng-repeat="comment in comments" class="list-group-item commentBox">
-							<small class="list-group-item-texts comment-item-text">
-								Posted on
-								<span data-ng-bind="comment.created | date:'mediumDate'"></span>
-								by
-								<span data-ng-bind="comment.commentBy"></span>
-							</small>
-							<h4 class="list-group-item-heading comment-item-text" data-ng-bind="comment.content"></h4>
-							<p class="list-group-item-text" data-ng-bind="post.description"></p>
-						</a>
-					</div>
-				</section>
-		</div>
-</section>
+        <div class='col-md-5 col-xs-12' id='commentClass'>
+
+            <div class='list-group-item-text'>showing {{comments.length}} comment(s)</div>
+
+            <section>
+                <div class=" comment-group">
+                    <div ng-show='!comments.length' class="alert alert-info list-group-item-texts" style='text-align:center'>
+                        Why not add a comment
+                    </div>
+                    <a data-ng-repeat="comment in comments" class="list-group-item commentBox">
+                        <small class="list-group-item-texts comment-item-text">
+                            Posted on
+                            <span data-ng-bind="comment.created | date:'mediumDate'"></span>
+                            by
+                            <span data-ng-bind="comment.commentBy"></span>
+                        </small>
+                        <h4 class="list-group-item-heading comment-item-text" data-ng-bind="comment.content"></h4>
+                        <p class="list-group-item-text" data-ng-bind="post.description"></p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
 </section>

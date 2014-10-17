@@ -1,9 +1,6 @@
 /********************************
 	SCROLL BAR HANDLING
 ********************************/
-
-
-/*************************************/
 ::-webkit-scrollbar { 
     display: none; 
 } 
@@ -16,10 +13,9 @@ body, html {
     scrollbar-track-color: Scrollbar;
     scrollbar-arrow-color: ButtonText;
 }
-/****************hidding scroll bar**********************/
+/********hidding scroll bar******/
 .logo {
 	width: 100px;
-	/*position: absolute;*/
 	margin-top:-10px;
 	vertical-align: center;
 }
@@ -38,12 +34,6 @@ body, html {
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
-}
-.ng-invalid.ng-dirty{
-   /* border-color:#FA787E;*/
-}
-.ng-valid.ng-dirty{
-    /*border-color:#78FA89;*/
 }
 
 .postItems{
@@ -178,19 +168,10 @@ form>ul>li label {
  {
 	border-radius: 5px;
 }
-
-/*.dashBoard ul 
-{
-	margin-top: 50%;
-}*/
 .dashBoard ul li {
 	display: inline-block;
 	list-style: none;
 }
-
-
-
-
 
 /*************************/
 #description {
@@ -281,7 +262,6 @@ input[type=file]{
 
 .myList-group-item-heading {
 	width: 100%;
-	/*background-color: rgba(20,20,20,.2);*/
 	text-align: center;
 	border-bottom: 1px solid #bbb;
 }
@@ -309,6 +289,7 @@ input[type=file]{
  .effect2
 {
   position: relative;
+  height: 280px;
 }
 .effect2:before, .effect2:after
 {
@@ -351,7 +332,4 @@ input[type=file]{
 .comment-group {
 	background-color: #eee;
 	height: 470px;
-}
-.comment-group a {
-
 }
